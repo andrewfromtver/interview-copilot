@@ -1,0 +1,81 @@
+* {
+    font-family: sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("./assets/bg.gif");
+}
+
+select {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 4px 16px;
+    margin: 16px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 0 4px #333;
+}
+
+textarea {
+    width: calc(100% - 40px);
+    resize: vertical;
+    min-height: 320px;
+    background-color: black;
+    color: #fff;
+    padding: 16px;
+}
+
+button {
+    padding: 16px;
+    border-radius: 16px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 0 16px #777;
+}
+
+button:active {
+    background: none;
+    color: #fff;
+    box-shadow: 0 0 2px #fff;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.card {
+    border-radius: 16px;
+    background-color: #333;
+    box-shadow: 0 0 16px #333;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    width: calc(100% - 32px);
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.card-init > img {
+    height: auto;
+    width: 100%;
+    max-width: 256px;
+}
+
+.card-init > button {
+    margin: 8px auto;
+}
