@@ -18,8 +18,10 @@ export const initRecognition = (firstInit = true) => {
             <div class="speech-placeholder">...</div>
         `
             resultQuestionText += " " + transcript
-            recognition.stop()
-            recognition.start()
+            if (recognition) {
+                recognition.stop()
+                recognition.start()
+            }
         }
         recognition.onend = (event) => {
             console.log("[INFO] - empty text recognition chunk")
