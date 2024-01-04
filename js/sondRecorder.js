@@ -29,7 +29,7 @@ const reInitApp = () => {
 export const recordSound = (recordBtn) => {
     recordBtn.onclick = () => {
         if (recordBtnDownCounter === 0) {
-            document.querySelector("#listen-image-record").hidden = false
+            document.querySelector("#listen-image").hidden = false
             recordBtnDownCounter++
             recordBtn.innerText = "Done"
             initRecognition(true)
@@ -48,7 +48,7 @@ export const recordSound = (recordBtn) => {
     recordBtn.onkeydown = (e) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
             if (recordBtnDownCounter === 0) {
-                document.querySelector("#listen-image-record").hidden = false
+                document.querySelector("#listen-image").hidden = false
                 recordBtnDownCounter++
                 recordBtn.innerText = "Listening ..."
                 initRecognition(true)

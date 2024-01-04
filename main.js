@@ -1,7 +1,8 @@
+import "./style.css"
+
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
-import { apiKeyInputPromt } from "./js/config.js"
 
 const initApp = (apiHelthy) => {
     if (apiHelthy) {
