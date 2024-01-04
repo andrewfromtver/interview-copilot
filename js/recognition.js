@@ -15,13 +15,9 @@ export const initRecognition = (firstInit = true) => {
             let transcript = event.results[0][0].transcript
             console.log("[INFO] - text recognition chunk: " + transcript)
             document.querySelector("#recognition-indicator").innerHTML += `
-            <div class="speech-placeholder">...</div>
-        `
+                <div class="speech-placeholder">...</div>
+            `
             resultQuestionText += " " + transcript
-            if (recognition) {
-                recognition.stop()
-                recognition.start()
-            }
         }
         recognition.onend = (event) => {
             console.log("[INFO] - empty text recognition chunk")
