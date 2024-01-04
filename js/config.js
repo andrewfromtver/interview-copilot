@@ -1,6 +1,8 @@
-export const apiUrl = "https://api.openai.com"
+export let apiUrl = "https://api.openai.com"
+const demoApiUrl = "http://127.0.0.1:5000"
 export let apiKey = ""
 export let lang = "en-US"
+export const demoModeKeyKode = "demo"
 
 export const apiKeyInputPromt = () => {
     if (sessionStorage.getItem("lang")) lang = sessionStorage.getItem("lang")
@@ -34,4 +36,8 @@ export const uiTranslate = () => {
         if (elem.classList.contains(lang)) elem.hidden = false
         else elem.hidden = true
     })
+}
+
+export const enableDemoMode = () => {
+    if (apiKey === demoModeKeyKode) apiUrl = demoApiUrl
 }

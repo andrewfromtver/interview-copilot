@@ -1,5 +1,5 @@
 import { resultPlaceholder, recognizedTextPlaceholder, newQuestionInner } from "./templates.js"
-import { initRecognition, recognition, resultQuestionText } from "./recognition.js"
+import { initRecognition, resultQuestionText } from "./recognition.js"
 import { apiRequest } from "./openApiRequest.js"
 import { uiTranslate } from "./config.js"
 
@@ -36,13 +36,13 @@ export const recordSound = (recordBtn) => {
             document.querySelector("#listen-image").hidden = false
             recordBtnDownCounter++
             recordBtn.innerText = "Done"
-            initRecognition(true)
+            initRecognition()
         } else {
+            initRecognition(false)
             if (resultQuestionText) {
                 document.querySelector("#app").innerHTML = resultPlaceholder
                 uiTranslate()
                 recordBtnDownCounter = 0
-                recognition.abort()
                 setTimeout(() => { printRecognizedText() }, 2500)
             } else {
                 recordBtnDownCounter = 0
@@ -56,17 +56,17 @@ export const recordSound = (recordBtn) => {
                 document.querySelector("#listen-image").hidden = false
                 recordBtnDownCounter++
                 recordBtn.innerText = "Listening ..."
-                initRecognition(true)
+                initRecognition()
             }
         }
     }
     recordBtn.onkeyup = (e) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+            initRecognition(false)
             if (resultQuestionText) {
                 document.querySelector("#app").innerHTML = resultPlaceholder
                 uiTranslate()
                 recordBtnDownCounter = 0
-                recognition.abort()
                 setTimeout(() => { printRecognizedText() }, 2500)
             } else {
                 recordBtnDownCounter = 0

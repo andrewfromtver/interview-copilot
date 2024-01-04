@@ -21,12 +21,12 @@ export const apiRequest = (query) => {
             if (response.status === 200) {
                 return response.json();
             } else {
-                document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
+                if (document.querySelector("#answer-text")) document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
             }
         })
         .then(data => {
-            if (data) document.querySelector("#answer-text").value = data.choices[0].message.content
+            if (data && document.querySelector("#answer-text")) document.querySelector("#answer-text").value = data.choices[0].message.content
         }).catch(error => {
-            document.querySelector("#answer-text").value = `Error: ${error}`
+            if (document.querySelector("#answer-text")) document.querySelector("#answer-text").value = `Error: ${error}`
         });
 }

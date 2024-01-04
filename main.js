@@ -1,7 +1,7 @@
 import "./style.css"
 
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, enableDemoMode, demoModeKeyKode } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
 
 const initApp = (apiHelthy) => {
@@ -24,24 +24,29 @@ const initApp = (apiHelthy) => {
 
 const apiHelthcheck = (apiUrl) => {
     apiKeyInputPromt()
-    fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-        }
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                initApp(true)
-            } else {
-                initApp(false)
+    if (apiKey === demoModeKeyKode) {
+        enableDemoMode()
+        initApp(true)
+    } else {
+        fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
             }
         })
-        .catch(err => {
-            console.error(err)
-            initApp(false)
-        })
+            .then((response) => {
+                if (response.status === 200) {
+                    initApp(true)
+                } else {
+                    initApp(false)
+                }
+            })
+            .catch(err => {
+                console.error(err)
+                initApp(false)
+            })
+    }
 }
 
 window.onload = () => {
