@@ -1,10 +1,12 @@
 import { resultPlaceholder, recognizedTextPlaceholder, newQuestionInner } from "./templates.js"
 import { initRecognition, recognition, resultQuestionText } from "./recognition.js"
 import { apiRequest } from "./openApiRequest.js"
+import { uiTranslate } from "./config.js"
 
 let recordBtnDownCounter = 0
 
 const printRecognizedText = () => {
+    document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = recognizedTextPlaceholder
     document.querySelector("#recognized-text").innerText = resultQuestionText
     let newQuestionBtn = document.querySelector("#new_question_btn")
@@ -17,9 +19,11 @@ const printRecognizedText = () => {
         }
     }, 100)
     apiRequest(resultQuestionText)
+    uiTranslate()
 }
 
 const reInitApp = () => {
+    document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = newQuestionInner
     let recordBtn = document.querySelector("#record_question_btn")
     setInterval(() => { if (recordBtn) recordBtn.focus() }, 100)
@@ -36,6 +40,7 @@ export const recordSound = (recordBtn) => {
         } else {
             if (resultQuestionText) {
                 document.querySelector("#app").innerHTML = resultPlaceholder
+                uiTranslate()
                 recordBtnDownCounter = 0
                 recognition.abort()
                 setTimeout(() => { printRecognizedText() }, 2500)
@@ -59,6 +64,7 @@ export const recordSound = (recordBtn) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
             if (resultQuestionText) {
                 document.querySelector("#app").innerHTML = resultPlaceholder
+                uiTranslate()
                 recordBtnDownCounter = 0
                 recognition.abort()
                 setTimeout(() => { printRecognizedText() }, 2500)
@@ -68,4 +74,5 @@ export const recordSound = (recordBtn) => {
             }
         }
     }
+    uiTranslate()
 }

@@ -16,11 +16,12 @@ select {
     top: 0;
     right: 0;
     padding: 4px 16px;
-    margin: 16px;
+    margin: 12px;
     border: none;
     outline: none;
     border-radius: 8px;
     box-shadow: 0 0 4px #333;
+    cursor: pointer;
 }
 
 textarea {
@@ -56,6 +57,29 @@ button:active {
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+}
+
+#recognition-indicator {
+    position: fixed;
+    top: o;
+    left: 0;
+    background-color: #333;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    opacity: 0.8;
+}
+
+.speech-placeholder {
+    border-radius: 8px;
+    background-color: lightgreen;
+    margin: 8px;
+    padding: 2px 16px;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
 }
 
 .card {
