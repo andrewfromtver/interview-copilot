@@ -1,5 +1,5 @@
 export let apiUrl = "https://api.openai.com"
-const demoApiUrl = "http://127.0.0.1:5000"
+const demoApiUrl = "http://134.209.194.96:8080"
 export let apiKey = ""
 export let lang = "en-US"
 export const demoModeKeyKode = "demo"
