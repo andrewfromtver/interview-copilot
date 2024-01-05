@@ -2,7 +2,7 @@ import apiUnhealthyImg from "../assets/api-unhelthy.png"
 import welcomeImg from "../assets/welcome-image.png"
 import listenImg from "../assets/listen.gif"
 import standbyImg from "../assets/standby-image.gif"
- 
+
 export const errorInner = `
 <div class="card card-init animate__animated animate__fadeIn">
     <h3 class="lang en-US">

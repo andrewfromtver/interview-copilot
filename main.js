@@ -1,7 +1,7 @@
 import "./style.css"
 
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, enableDemoMode, demoModeKeyKode } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, enableDemoMode, demoModeKeyKode, speachToggleListener } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
 
 const initApp = (apiHelthy) => {
@@ -23,6 +23,7 @@ const initApp = (apiHelthy) => {
 }
 
 const apiHelthcheck = (apiUrl) => {
+    speachToggleListener()
     apiKeyInputPromt()
     if (apiKey === demoModeKeyKode) {
         enableDemoMode()

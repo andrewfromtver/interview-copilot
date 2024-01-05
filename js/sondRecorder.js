@@ -11,6 +11,7 @@ const printRecognizedText = () => {
     document.querySelector("#recognized-text").innerText = resultQuestionText
     let newQuestionBtn = document.querySelector("#new_question_btn")
     newQuestionBtn.onclick = () => {
+        window.speechSynthesis.cancel()
         reInitApp()
     }
     setInterval(() => {
@@ -34,6 +35,7 @@ export const recordSound = (recordBtn) => {
     recordBtn.onclick = () => {
         if (recordBtnDownCounter === 0) {
             document.querySelector("#listen-image").hidden = false
+            document.querySelector("#welcome-image").hidden = true
             recordBtnDownCounter++
             recordBtn.innerText = "Done"
             initRecognition()
@@ -54,6 +56,7 @@ export const recordSound = (recordBtn) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
             if (recordBtnDownCounter === 0) {
                 document.querySelector("#listen-image").hidden = false
+                document.querySelector("#welcome-image").hidden = true
                 recordBtnDownCounter++
                 recordBtn.innerText = "Listening ..."
                 initRecognition()

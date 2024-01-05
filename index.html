@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
 </head>
+
 <body>
     <div id="recognition-indicator"></div>
     <div id="app"></div>
-    <select hidden id="voice-lang">
+    <select id="voice-lang">
         <option value="en-US">English</option>
         <option value="ru-RU">Русский</option>
     </select>
+    <label class="speech-toggle" for="speech_toggle">
+        <p class="speech-toggle-title">Web Speech API</p>
+        <input type="checkbox" id="speech_toggle">
+        <span></span>
+    </label>
 </body>
+
 </html>

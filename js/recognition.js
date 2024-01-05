@@ -19,23 +19,23 @@ export const initRecognition = (firstInit = true) => {
             `
             resultQuestionText += " " + transcript
         }
-        recognition.onend = (event) => {
+        recognition.onend = () => {
             console.log("[INFO] - empty text recognition chunk")
             if (recognition) {
-                recognition.stop()
+                recognition.abort()
                 recognition.start()
             }
         }
-        recognition.onerror = (event) => {
+        recognition.onerror = () => {
             console.log("[ERROR] - text recognition chunk not parsed")
             if (recognition) {
-                recognition.stop()
+                recognition.abort()
                 recognition.start()
             }
         }
     } else {
         if (recognition) {
-            recognition.stop()
+            recognition.abort()
         }
         recognition = undefined
     }

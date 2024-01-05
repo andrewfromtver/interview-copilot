@@ -1,8 +1,21 @@
+:root {
+    --button-width: 48px;
+    --button-height: 24px;
+    --toggle-diameter: 20px;
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 10px;
+    --toggle-wider: 24px;
+    --color-grey: #E9E9E9;
+    --color-dark-grey: #39393D;
+    --color-green: #30D158;
+}
+
 * {
     font-family: sans-serif;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -31,6 +44,7 @@ textarea {
     background-color: black;
     color: #fff;
     padding: 16px;
+    border-radius: 8px;
 }
 
 button {
@@ -56,7 +70,6 @@ button:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
 }
 
 #recognition-indicator {
@@ -91,15 +104,89 @@ button:active {
     text-align: center;
     width: calc(100% - 32px);
     max-width: 480px;
-    margin: 0 auto;
+    margin: 64px auto;
 }
 
-.card-init > img {
+.card-init>img {
     height: auto;
     width: 100%;
     max-width: 256px;
 }
 
-.card-init > button {
+.card-init>button {
     margin: 8px auto;
+}
+
+.speech-toggle {
+    margin: 12px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.speech-toggle-title {
+    background-color: #fff;
+    color: #333;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 0 12px 0 0;
+    font-size: 12px;
+}
+
+span {
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: .3s all ease-in-out;
+}
+
+span::after {
+    content: '';
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, .10);
+    transition: .3s all ease-in-out;
+}
+
+input[type="checkbox"]:checked+span {
+    background-color: var(--color-green);
+}
+
+input[type="checkbox"]:checked+span::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, .10);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:active+span::after {
+    width: var(--toggle-wider);
+}
+
+input[type="checkbox"]:checked:active+span::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+@media(prefers-color-scheme: dark) {
+    body {
+        background-color: #1C1C1E;
+    }
+
+    span {
+        background-color: var(--color-dark-grey);
+    }
 }

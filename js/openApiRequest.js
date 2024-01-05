@@ -1,4 +1,4 @@
-import { apiKey, apiUrl } from "./config.js";
+import { apiKey, apiUrl, lang, speechApi } from "./config.js";
 
 export const apiRequest = (query) => {
     fetch(`${apiUrl}/v1/chat/completions`, {
@@ -25,7 +25,24 @@ export const apiRequest = (query) => {
             }
         })
         .then(data => {
-            if (data && document.querySelector("#answer-text")) document.querySelector("#answer-text").value = data.choices[0].message.content
+            if (data && document.querySelector("#answer-text")) {
+                document.querySelector("#answer-text").value = data.choices[0].message.content
+                if (speechApi) {
+                    try {
+                        window.speechSynthesis.cancel()
+                        let msg = new SpeechSynthesisUtterance()
+                        msg.rate = 0.95
+                        msg.pitch = 1
+                        msg.lang = lang
+                        msg.text = document.querySelector("#answer-text").value
+                        window.speechSynthesis.speak(msg)
+                    }
+                    catch (e) {
+                        window.speechSynthesis.cancel()
+                        console.error(e)
+                    }
+                }
+            }
         }).catch(error => {
             if (document.querySelector("#answer-text")) document.querySelector("#answer-text").value = `Error: ${error}`
         });

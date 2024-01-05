@@ -3,6 +3,7 @@ const demoApiUrl = "http://134.209.194.96:8080"
 export let apiKey = ""
 export let lang = "en-US"
 export const demoModeKeyKode = "demo"
+export let speechApi = false
 
 export const apiKeyInputPromt = () => {
     if (sessionStorage.getItem("lang")) lang = sessionStorage.getItem("lang")
@@ -40,4 +41,14 @@ export const uiTranslate = () => {
 
 export const enableDemoMode = () => {
     if (apiKey === demoModeKeyKode) apiUrl = demoApiUrl
+}
+
+export const speachToggleListener = () => {
+    let togler = document.querySelector("#speech_toggle")
+    togler.onchange = () => {
+        speechApi = togler.checked
+        if (!togler.checked) {
+            window.speechSynthesis.cancel()
+        }
+    }
 }
