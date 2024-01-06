@@ -82,7 +82,8 @@ button:active {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    opacity: 0.8;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 0 16px #333;
 }
 
 .speech-placeholder {
@@ -183,7 +184,7 @@ input[type="checkbox"]:checked:active+span::after {
 
 @media(prefers-color-scheme: dark) {
     body {
-        background-color: #1C1C1E;
+        background-color: black;
     }
 
     span {
