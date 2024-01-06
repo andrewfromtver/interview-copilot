@@ -74,6 +74,7 @@ export const recognizedTextPlaceholder = `
     </h3>
     <textarea id="answer-text">Loading ...</textarea>
     <button id="new_question_btn">New question</button>
+    <button id="reload_question_btn">Try again</button>
 </div>
 `
 

@@ -1,6 +1,11 @@
 import { apiKey, apiUrl, lang, speechApi } from "./config.js";
 
 export const apiRequest = (query) => {
+    document.querySelector("#reload_question_btn").onclick = () => {
+        window.speechSynthesis.cancel()
+        document.querySelector("#answer-text").value = "Reloading ..."
+        apiRequest(document.querySelector("#recognized-text").innerText)
+    }
     fetch(`${apiUrl}/v1/chat/completions`, {
         method: 'POST',
         headers: {
@@ -31,7 +36,7 @@ export const apiRequest = (query) => {
                     try {
                         window.speechSynthesis.cancel()
                         let msg = new SpeechSynthesisUtterance()
-                        msg.rate = 0.95
+                        msg.rate = 1.05
                         msg.pitch = 1
                         msg.lang = lang
                         msg.text = document.querySelector("#answer-text").value
