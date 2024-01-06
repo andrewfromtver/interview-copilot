@@ -5,7 +5,9 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import http from "http"
 import { Client } from "gpt-free"
+import consoleStamp from 'console-stamp';
 
+consoleStamp(console, 'yyyy/mm/dd HH:MM:ss.l');
 
 const app = express()
 app.use(cors({ origin: "*" }))
@@ -18,7 +20,7 @@ server.listen(80)
 app.post("/v1/chat/completions", (req, resp) => {
     try {
         let query = req.body.messages[0].content
-        console.log(`[INFO] - text query: ${query}`)
+        console.info(`text query: ${query}`)
         const client = new Client()
         const conversation = client.model("chat")
         const response = conversation.ask(query)
@@ -36,6 +38,7 @@ app.post("/v1/chat/completions", (req, resp) => {
             })
         })
     } catch (err) {
+        console.error(err)
         resp.send({
             status: "BAD",
             msg: `Server side error - ${err}`,
