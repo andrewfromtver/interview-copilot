@@ -25,7 +25,7 @@ const initApp = (apiHelthy) => {
 const apiHelthcheck = (apiUrl) => {
     speachToggleListener()
     apiKeyInputPromt()
-    if (apiKey === demoModeKeyKode) {
+    if (apiKey === demoModeKeyKode || apiKey === "onprem") {
         enableDemoMode()
         initApp(true)
     } else {

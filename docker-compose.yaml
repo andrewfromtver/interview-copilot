@@ -1,0 +1,50 @@
+version: "3.9"
+
+networks:
+  copilot-subnet:
+
+services:
+  # node.js backend
+  copilot-backend:
+    container_name: copilot-backend
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 0.064G
+    networks:
+      - copilot-subnet
+    restart: unless-stopped
+    healthcheck:
+      test: wget --quiet --post-data=test --tries=1 --spider http://copilot-backend/v1/chat/completions || exit -1
+      interval: 5s
+      timeout: 10s
+      retries: 3
+
+  # nginx frontend
+  copilot-frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    container_name: copilot-frontend
+    depends_on:
+      copilot-backend:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 0.016G
+    networks:
+      - copilot-subnet
+    ports:
+      - 0.0.0.0:80:80
+    restart: unless-stopped
+    healthcheck:
+      test: wget --quiet --tries=1 --spider http://copilot-frontend || exit -1
+      interval: 5s
+      timeout: 10s
+      retries: 3

@@ -41,6 +41,7 @@ export const uiTranslate = () => {
 
 export const enableDemoMode = () => {
     if (apiKey === demoModeKeyKode) apiUrl = demoApiUrl
+    if (apiKey === "onprem") apiUrl = `${window.location.protocol}//${window.location.host}`
 }
 
 export const speachToggleListener = () => {
