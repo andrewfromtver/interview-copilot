@@ -32,7 +32,7 @@ export const apiRequest = (query) => {
                     document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
                     if (persistentMode && persistentModeCount < retryCount) {
                         persistentModeCount ++
-                        document.querySelector("#answer-text").value = `Retrying [${persistentModeCount} of 10]`
+                        document.querySelector("#answer-text").value = `Retrying [${persistentModeCount} of 20]`
                         apiRequest(query)
                     } else {
                         persistentModeCount = 0
