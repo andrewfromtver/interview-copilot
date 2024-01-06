@@ -113,10 +113,10 @@ services:
         condition: service_healthy
       copilot-backend-3:
         condition: service_healthy
-      copilot-backend-4:
-        condition: service_healthy
-      copilot-backend-5:
-        condition: service_healthy
+      # copilot-backend-4:
+      #   condition: service_healthy
+      # copilot-backend-5:
+      #   condition: service_healthy
     deploy:
       resources:
         limits:
