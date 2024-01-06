@@ -18,6 +18,7 @@ server.listen(80)
 app.post("/v1/chat/completions", (req, resp) => {
     try {
         let query = req.body.messages[0].content
+        console.log(`[INFO] - text query: ${query}`)
         const client = new Client()
         const conversation = client.model("chat")
         const response = conversation.ask(query)
