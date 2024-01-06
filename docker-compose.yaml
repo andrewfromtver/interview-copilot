@@ -62,43 +62,43 @@ services:
       timeout: 10s
       retries: 3
 
-  copilot-backend-4:
-    container_name: copilot-backend-4
-    build:
-      context: ./backend
-      dockerfile: ./Dockerfile
-    deploy:
-      resources:
-        limits:
-          cpus: "1"
-          memory: 0.016G
-    networks:
-      - copilot-subnet
-    restart: unless-stopped
-    healthcheck:
-      test: wget --quiet --tries=1 --spider http://copilot-backend-4/healthcheck || exit -1
-      interval: 5s
-      timeout: 10s
-      retries: 3
+  # copilot-backend-4:
+  #   container_name: copilot-backend-4
+  #   build:
+  #     context: ./backend
+  #     dockerfile: ./Dockerfile
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "1"
+  #         memory: 0.016G
+  #   networks:
+  #     - copilot-subnet
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: wget --quiet --tries=1 --spider http://copilot-backend-4/healthcheck || exit -1
+  #     interval: 5s
+  #     timeout: 10s
+  #     retries: 3
 
-  copilot-backend-5:
-    container_name: copilot-backend-5
-    build:
-      context: ./backend
-      dockerfile: ./Dockerfile
-    deploy:
-      resources:
-        limits:
-          cpus: "1"
-          memory: 0.016G
-    networks:
-      - copilot-subnet
-    restart: unless-stopped
-    healthcheck:
-      test: wget --quiet --tries=1 --spider http://copilot-backend-5/healthcheck || exit -1
-      interval: 5s
-      timeout: 10s
-      retries: 3
+  # copilot-backend-5:
+  #   container_name: copilot-backend-5
+  #   build:
+  #     context: ./backend
+  #     dockerfile: ./Dockerfile
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: "1"
+  #         memory: 0.016G
+  #   networks:
+  #     - copilot-subnet
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: wget --quiet --tries=1 --spider http://copilot-backend-5/healthcheck || exit -1
+  #     interval: 5s
+  #     timeout: 10s
+  #     retries: 3
 
   # nginx frontend
   copilot-frontend:
