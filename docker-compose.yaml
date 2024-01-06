@@ -13,7 +13,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
@@ -32,7 +32,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
@@ -51,7 +51,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
@@ -70,7 +70,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
@@ -89,7 +89,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
@@ -120,7 +120,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "1"
           memory: 0.016G
     networks:
       - copilot-subnet
