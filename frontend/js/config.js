@@ -3,6 +3,8 @@ export let apiKey = ""
 export let lang = "en-US"
 export let speechApi = false
 export let deploymentWithBackend = true
+export let persistentMode = true
+export const retryCount = 10
 
 export const deploymentTypeDetector = () => {
     if (window.location.host === "andrewfromtver.github.io") {

@@ -1,5 +1,6 @@
-import { apiKey, apiUrl, lang, speechApi } from "./config.js";
+import { apiKey, apiUrl, lang, persistentMode, speechApi, retryCount } from "./config.js";
 
+let persistentModeCount = 0
 export const apiRequest = (query) => {
     document.querySelector("#reload_question_btn").onclick = () => {
         window.speechSynthesis.cancel()
@@ -24,9 +25,19 @@ export const apiRequest = (query) => {
     })
         .then((response) => {
             if (response.status === 200) {
-                return response.json();
+                persistentModeCount = 0
+                return response.json()
             } else {
-                if (document.querySelector("#answer-text")) document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
+                if (document.querySelector("#answer-text")) {
+                    document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
+                    if (persistentMode && persistentModeCount < retryCount) {
+                        persistentModeCount ++
+                        document.querySelector("#answer-text").value = `Retrying [${persistentModeCount}]`
+                        apiRequest(query)
+                    } else {
+                        persistentModeCount = 0
+                    }
+                }
             }
         })
         .then(data => {
@@ -36,13 +47,14 @@ export const apiRequest = (query) => {
                     try {
                         window.speechSynthesis.cancel()
                         let msg = new SpeechSynthesisUtterance()
-                        msg.rate = 1.05
+                        msg.rate = 1.15
                         msg.pitch = 1
                         msg.lang = lang
                         msg.text = document.querySelector("#answer-text").value
                         window.speechSynthesis.speak(msg)
                     }
                     catch (e) {
+                        persistentModeCount = 0
                         window.speechSynthesis.cancel()
                         console.error(e)
                     }
