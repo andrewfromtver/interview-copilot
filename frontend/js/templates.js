@@ -72,9 +72,7 @@ export const recognizedTextPlaceholder = `
     <h3 class="lang ru-RU">
         ответ GPT 3.5-turbo
     </h3>
-    <textarea id="answer-text">
-        Loading ...
-    </textarea>
+    <textarea id="answer-text">Loading ...</textarea>
     <button id="new_question_btn">New question</button>
 </div>
 `

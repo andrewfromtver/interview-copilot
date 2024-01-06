@@ -42,3 +42,19 @@ app.post("/v1/chat/completions", (req, resp) => {
         })
     }
 })
+
+app.get("/healthcheck", (req, resp) => {
+    try {
+        resp.send({
+            status: "OK",
+            msg: `Query processed successfully`,
+            choices: null
+        })
+    } catch (err) {
+        resp.send({
+            status: "BAD",
+            msg: `Server side error - ${err}`,
+            choices: null
+        })
+    }
+})
