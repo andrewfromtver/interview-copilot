@@ -1,9 +1,16 @@
 export let apiUrl = "https://api.openai.com"
-const demoApiUrl = "http://134.209.194.96:8080"
 export let apiKey = ""
 export let lang = "en-US"
-export const demoModeKeyKode = "demo"
 export let speechApi = false
+export let deploymentWithBackend = true
+
+export const deploymentTypeDetector = () => {
+    if (window.location.host === "andrewfromtver.github.io") {
+        deploymentWithBackend = false
+    } else {
+        apiUrl = `${window.location.protocol}//${window.location.host}`
+    }
+}
 
 export const apiKeyInputPromt = () => {
     if (sessionStorage.getItem("lang")) lang = sessionStorage.getItem("lang")
@@ -13,8 +20,10 @@ export const apiKeyInputPromt = () => {
         sessionStorage.setItem("lang", lang)
         uiTranslate()
     }
-    if (lang === "en-US") apiKey = prompt("Please enter your api.openai.com key")
-    else apiKey = prompt("Пожалуйста, введите свой ключ api.openai.com")
+    if (!deploymentWithBackend) {
+        if (lang === "en-US") apiKey = prompt("Please enter your api.openai.com key")
+        else apiKey = prompt("Пожалуйста, введите свой ключ api.openai.com")
+    }
     document.querySelector("#voice-lang").hidden = false
 }
 
@@ -37,11 +46,6 @@ export const uiTranslate = () => {
         if (elem.classList.contains(lang)) elem.hidden = false
         else elem.hidden = true
     })
-}
-
-export const enableDemoMode = () => {
-    if (apiKey === demoModeKeyKode) apiUrl = demoApiUrl
-    if (apiKey === "onprem") apiUrl = `${window.location.protocol}//${window.location.host}`
 }
 
 export const speachToggleListener = () => {

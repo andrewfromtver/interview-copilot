@@ -1,7 +1,7 @@
 import "./style.css"
 
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, enableDemoMode, demoModeKeyKode, speachToggleListener } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
 
 const initApp = (apiHelthy) => {
@@ -23,10 +23,9 @@ const initApp = (apiHelthy) => {
 }
 
 const apiHelthcheck = (apiUrl) => {
-    speachToggleListener()
     apiKeyInputPromt()
-    if (apiKey === demoModeKeyKode || apiKey === "onprem") {
-        enableDemoMode()
+    speachToggleListener()
+    if (deploymentWithBackend) {
         initApp(true)
     } else {
         fetch(apiUrl, {
@@ -51,5 +50,6 @@ const apiHelthcheck = (apiUrl) => {
 }
 
 window.onload = () => {
+    deploymentTypeDetector()
     apiHelthcheck(`${apiUrl}/v1/models`)
 }
