@@ -1,3 +1,4 @@
+import EasySpeech from 'easy-speech'
 import { resultPlaceholder, recognizedTextPlaceholder, newQuestionInner } from "./templates.js"
 import { initRecognition, resultQuestionText } from "./recognition.js"
 import { apiRequest } from "./openApiRequest.js"
@@ -11,7 +12,7 @@ const printRecognizedText = () => {
     document.querySelector("#recognized-text").innerText = resultQuestionText
     let newQuestionBtn = document.querySelector("#new_question_btn")
     newQuestionBtn.onclick = () => {
-        window.speechSynthesis.cancel()
+        EasySpeech.cancel()
         reInitApp()
     }
     apiRequest(resultQuestionText)

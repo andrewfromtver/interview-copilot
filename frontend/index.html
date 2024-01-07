@@ -13,12 +13,13 @@
     <div id="recognition-indicator"></div>
     <div id="app"></div>
     <select id="voice-lang">
-        <option value="en-US">English</option>
-        <option value="ru-RU">Русский</option>
+        <option value="en-US">En</option>
+        <option value="ru-RU">Ru</option>
     </select>
+    <select hidden id="voice-mode"></select>
     <label class="speech-toggle" for="speech_toggle">
         <p class="speech-toggle-title">Web Speech API</p>
-        <input type="checkbox" id="speech_toggle">
+        <input disabled type="checkbox" id="speech_toggle">
         <span></span>
     </label>
 </body>

@@ -1,9 +1,10 @@
-import { apiKey, apiUrl, lang, persistentMode, speechApi, retryCount } from "./config.js";
+import EasySpeech from 'easy-speech'
+import { apiKey, apiUrl, currentVoices, currentVoiceId, persistentMode, speechApi, retryCount } from "./config.js"
 
 let persistentModeCount = 0
 export const apiRequest = (query) => {
     document.querySelector("#reload_question_btn").onclick = () => {
-        window.speechSynthesis.cancel()
+        EasySpeech.cancel()
         document.querySelector("#answer-text").value = "Reloading ..."
         apiRequest(document.querySelector("#recognized-text").innerText)
     }
@@ -31,7 +32,7 @@ export const apiRequest = (query) => {
                 if (document.querySelector("#answer-text")) {
                     document.querySelector("#answer-text").value = `HTTP error! status: ${response.status}`
                     if (persistentMode && persistentModeCount < retryCount) {
-                        persistentModeCount ++
+                        persistentModeCount++
                         document.querySelector("#answer-text").value = `Retrying [${persistentModeCount} of 20]`
                         apiRequest(query)
                     } else {
@@ -45,22 +46,24 @@ export const apiRequest = (query) => {
                 document.querySelector("#answer-text").value = data.choices[0].message.content
                 if (speechApi) {
                     try {
-                        window.speechSynthesis.cancel()
-                        let msg = new SpeechSynthesisUtterance()
-                        msg.rate = 1.15
-                        msg.pitch = 1
-                        msg.lang = lang
-                        msg.text = document.querySelector("#answer-text").value
-                        window.speechSynthesis.speak(msg)
+                        EasySpeech.speak({
+                            text: document.querySelector("#answer-text").value,
+                            voice: currentVoices[currentVoiceId],
+                            pitch: 1,
+                            rate: 1,
+                            volume: 1,
+                            boundary: e => console.info('[INFO] - boundary reached')
+                        })
+                        console.info(`[INFO] - speek event with ${currentVoices[0]}`)
                     }
                     catch (e) {
                         persistentModeCount = 0
-                        window.speechSynthesis.cancel()
                         console.error(e)
                     }
                 }
             }
         }).catch(error => {
+            persistentModeCount = 0
             if (document.querySelector("#answer-text")) document.querySelector("#answer-text").value = `Error: ${error}`
         });
 }

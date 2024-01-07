@@ -27,6 +27,7 @@
     "dependencies": {
         "@babel/core": "^7.15.8",
         "@babel/preset-env": "^7.15.8",
-        "babel-loader": "^8.2.3"
+        "babel-loader": "^8.2.3",
+        "easy-speech": "^2.2.0"
     }
 }

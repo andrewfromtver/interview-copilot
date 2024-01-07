@@ -1,7 +1,7 @@
 import "./style.css"
 
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector, langChanger } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector, langChanger, lang } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
 
 const detectMobileOrDesctop = () => {

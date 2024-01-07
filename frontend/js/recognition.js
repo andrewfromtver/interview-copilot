@@ -13,21 +13,21 @@ export const initRecognition = (firstInit = true) => {
 
         recognition.onresult = (event) => {
             let transcript = event.results[0][0].transcript
-            console.log("[INFO] - text recognition chunk: " + transcript)
+            console.info("[INFO] - text recognition chunk: " + transcript)
             document.querySelector("#recognition-indicator").innerHTML += `
                 <div class="speech-placeholder">...</div>
             `
             resultQuestionText += " " + transcript
         }
         recognition.onend = () => {
-            console.log("[INFO] - empty text recognition chunk")
+            console.info("[INFO] - empty text recognition chunk")
             if (recognition) {
                 recognition.abort()
                 recognition.start()
             }
         }
         recognition.onerror = () => {
-            console.log("[ERROR] - text recognition chunk not parsed")
+            console.info("[INFO] - text recognition chunk not parsed")
             if (recognition) {
                 recognition.abort()
                 recognition.start()
