@@ -43,6 +43,7 @@ export const langChanger = () => {
         .catch(e => console.error(e))
     if (sessionStorage.getItem("lang")) lang = sessionStorage.getItem("lang")
     document.querySelector("#voice-lang").onchange = () => {
+        currentVoiceId = 0
         console.info("[INFO] - voice recognition lang changed: " + document.querySelector("#voice-lang").value)
         EasySpeech.init({ maxTimeout: 5000, interval: 250 })
             .then(() => {
@@ -65,9 +66,6 @@ export const langChanger = () => {
         lang = document.querySelector("#voice-lang").value
         sessionStorage.setItem("lang", lang)
         uiTranslate()
-    }
-    document.querySelector("#voice-mode").onchange = () => {
-        currentVoiceId = Number(document.querySelector("#voice-mode").value)
     }
 }
 
@@ -92,6 +90,10 @@ export const speachToggleListener = () => {
     let togler = document.querySelector("#speech_toggle")
     togler.onchange = () => {
         speechApi = togler.checked
+        document.querySelector("#voice-mode").value = 0
+        document.querySelector("#voice-mode").onchange = () => {
+            currentVoiceId = Number(document.querySelector("#voice-mode").value)
+        }
         document.querySelector("#voice-mode").hidden = !togler.checked
         if (!togler.checked) {
             EasySpeech.cancel()
