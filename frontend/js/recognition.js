@@ -18,6 +18,8 @@ export const initRecognition = (firstInit = true) => {
                 <div class="speech-placeholder">...</div>
             `
             resultQuestionText += " " + transcript
+            document.querySelector("#record_question_btn").innerText = "Done"
+            document.querySelector("#cancel_question_btn").hidden = false
         }
         recognition.onend = () => {
             console.info("[INFO] - empty text recognition chunk")

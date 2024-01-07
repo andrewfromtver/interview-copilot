@@ -24,6 +24,10 @@ const reInitApp = () => {
     document.querySelector("#app").innerHTML = newQuestionInner
     let recordBtn = document.querySelector("#record_question_btn")
     recordSound(recordBtn)
+    document.querySelector("#cancel_question_btn").onclick = () => {
+        recordBtnDownCounter = 0
+        reInitApp()
+    }
 }
 
 const spacebarPressToTalk = (recordBtn) => {
@@ -60,7 +64,7 @@ export const recordSound = (recordBtn) => {
             document.querySelector("#listen-image").hidden = false
             document.querySelector("#welcome-image").hidden = true
             recordBtnDownCounter++
-            recordBtn.innerText = "Done"
+            recordBtn.innerText = "Cancel"
             initRecognition()
         } else {
             initRecognition(false)

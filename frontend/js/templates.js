@@ -36,6 +36,7 @@ export const successInner = `
         мы будем слушать, пока вы не нажмете кнопку "Done"
     </p>
     <button id="record_question_btn">Click me</button>
+    <button hidden id="cancel_question_btn">Cancel</button>
 </div>
 `
 
@@ -97,5 +98,6 @@ export const newQuestionInner = `
         мы будем слушать, пока вы не нажмете кнопку "Done"
     </p>
     <button id="record_question_btn">Click me</button>
+    <button hidden id="cancel_question_btn">Cancel</button>
 </div>
 `

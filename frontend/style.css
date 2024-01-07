@@ -97,7 +97,7 @@ button:active {
     box-shadow: 0 0 16px #333;
 }
 
-#reload_question_btn {
+#reload_question_btn, #cancel_question_btn {
     margin-left: 16px;
 }
 
