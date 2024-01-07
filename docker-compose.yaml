@@ -406,7 +406,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.064G
+          memory: 0.016G
     networks:
       - copilot-subnet
     ports:
