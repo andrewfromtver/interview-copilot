@@ -14,11 +14,6 @@ const printRecognizedText = () => {
         window.speechSynthesis.cancel()
         reInitApp()
     }
-    setInterval(() => {
-        if (newQuestionBtn) {
-            newQuestionBtn.focus()
-        }
-    }, 100)
     apiRequest(resultQuestionText)
     uiTranslate()
 }
@@ -27,31 +22,10 @@ const reInitApp = () => {
     document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = newQuestionInner
     let recordBtn = document.querySelector("#record_question_btn")
-    setInterval(() => { if (recordBtn) recordBtn.focus() }, 100)
     recordSound(recordBtn)
 }
 
-export const recordSound = (recordBtn) => {
-    recordBtn.onclick = () => {
-        if (recordBtnDownCounter === 0) {
-            document.querySelector("#listen-image").hidden = false
-            document.querySelector("#welcome-image").hidden = true
-            recordBtnDownCounter++
-            recordBtn.innerText = "Done"
-            initRecognition()
-        } else {
-            initRecognition(false)
-            if (resultQuestionText) {
-                document.querySelector("#app").innerHTML = resultPlaceholder
-                uiTranslate()
-                recordBtnDownCounter = 0
-                setTimeout(() => { printRecognizedText() }, 2500)
-            } else {
-                recordBtnDownCounter = 0
-                reInitApp()
-            }
-        }
-    }
+const spacebarPressToTalk = (recordBtn) => {
     recordBtn.onkeydown = (e) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
             if (recordBtnDownCounter === 0) {
@@ -77,5 +51,29 @@ export const recordSound = (recordBtn) => {
             }
         }
     }
+}
+
+export const recordSound = (recordBtn) => {
+    recordBtn.onclick = () => {
+        if (recordBtnDownCounter === 0) {
+            document.querySelector("#listen-image").hidden = false
+            document.querySelector("#welcome-image").hidden = true
+            recordBtnDownCounter++
+            recordBtn.innerText = "Done"
+            initRecognition()
+        } else {
+            initRecognition(false)
+            if (resultQuestionText) {
+                document.querySelector("#app").innerHTML = resultPlaceholder
+                uiTranslate()
+                recordBtnDownCounter = 0
+                setTimeout(() => { printRecognizedText() }, 2500)
+            } else {
+                recordBtnDownCounter = 0
+                reInitApp()
+            }
+        }
+    }
+    // spacebarPressToTalk(recordBtn)
     uiTranslate()
 }

@@ -28,12 +28,12 @@ export const successInner = `
     <img id="welcome-image" src=${welcomeImg} alt="Welcome image">
     <img hidden id="listen-image" src=${listenImg} alt="Listener">
     <p class="lang en-US">
-        Press the space bar or click on the button below to record the question, 
-        we will listen while you hold down the space bar
+        Press the button below to record the question, 
+        we will listen until you press the "Done" button
     </p>
     <p class="lang ru-RU">
-        Нажмите пробел или нажмите на кнопку ниже, чтобы записать вопрос, 
-        мы будем слушать, пока вы удерживаете нажатой клавишу пробела
+        Нажмите на кнопку ниже, чтобы записать вопрос, 
+        мы будем слушать, пока вы не нажмете кнопку "Done"
     </p>
     <button id="record_question_btn">Click me</button>
 </div>
@@ -70,7 +70,7 @@ export const recognizedTextPlaceholder = `
         GPT 3.5-turbo answer
     </h3>
     <h3 class="lang ru-RU">
-        ответ GPT 3.5-turbo
+        Ответ GPT 3.5-turbo
     </h3>
     <textarea id="answer-text">Loading ...</textarea>
     <button id="new_question_btn">New question</button>
@@ -89,12 +89,12 @@ export const newQuestionInner = `
     <img id="welcome-image" src=${welcomeImg} alt="Welcome image">
     <img hidden id="listen-image" src=${listenImg} alt="Listener">
     <p class="lang en-US">
-        Press the space bar or click on the button below to record the question, 
-        we will listen while you hold down the space bar
+        Press the button below to record the question, 
+        we will listen until you press the "Done" button
     </p>
     <p class="lang ru-RU">
-        Нажмите пробел или нажмите на кнопку ниже, чтобы записать вопрос, 
-        мы будем слушать, пока вы удерживаете нажатой клавишу пробела
+        Нажмите на кнопку ниже, чтобы записать вопрос, 
+        мы будем слушать, пока вы не нажмете кнопку "Done"
     </p>
     <button id="record_question_btn">Click me</button>
 </div>

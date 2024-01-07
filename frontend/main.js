@@ -1,14 +1,19 @@
 import "./style.css"
 
 import { errorInner, successInner } from "./js/templates.js"
-import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector } from "./js/config.js"
+import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector, langChanger } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
+
+const detectMobileOrDesctop = () => {
+    // setInterval(() => { if (recordBtn) recordBtn.focus() }, 100)
+    // setInterval(() => { if (newQuestionBtn) { newQuestionBtn.focus() } }, 100)
+    // to do
+}
 
 const initApp = (apiHelthy) => {
     if (apiHelthy) {
         document.querySelector("#app").innerHTML = successInner
         let recordBtn = document.querySelector("#record_question_btn")
-        setInterval(() => { if (recordBtn) recordBtn.focus() }, 100)
         recordSound(recordBtn)
     } else {
         document.querySelector("#app").innerHTML = errorInner
@@ -50,6 +55,8 @@ const apiHelthcheck = (apiUrl) => {
 }
 
 window.onload = () => {
+    //detectMobileOrDesctop()
+    langChanger()
     deploymentTypeDetector()
     apiHelthcheck(`${apiUrl}/v1/models`)
 }
