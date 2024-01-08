@@ -19,27 +19,21 @@ const printRecognizedText = () => {
     uiTranslate()
 }
 
-const reInitApp = () => {
+export const reInitApp = () => {
+    recordBtnDownCounter = 0
     document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = newQuestionInner
     let recordBtn = document.querySelector("#record_question_btn")
     recordSound(recordBtn)
-    document.querySelector("#cancel_question_btn").onclick = () => {
-        recordBtnDownCounter = 0
-        reInitApp()
-    }
 }
 
 const spacebarPressToTalk = (recordBtn) => {
     recordBtn.onkeydown = (e) => {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
-            if (recordBtnDownCounter === 0) {
-                document.querySelector("#listen-image").hidden = false
-                document.querySelector("#welcome-image").hidden = true
-                recordBtnDownCounter++
-                recordBtn.innerText = "Listening ..."
-                initRecognition()
-            }
+            document.querySelector("#listen-image").hidden = false
+            document.querySelector("#welcome-image").hidden = true
+            recordBtn.innerText = "Listening ..."
+            initRecognition()
         }
     }
     recordBtn.onkeyup = (e) => {
@@ -48,10 +42,8 @@ const spacebarPressToTalk = (recordBtn) => {
             if (resultQuestionText) {
                 document.querySelector("#app").innerHTML = resultPlaceholder
                 uiTranslate()
-                recordBtnDownCounter = 0
                 setTimeout(() => { printRecognizedText() }, 2500)
             } else {
-                recordBtnDownCounter = 0
                 reInitApp()
             }
         }
@@ -74,7 +66,6 @@ export const recordSound = (recordBtn) => {
                 recordBtnDownCounter = 0
                 setTimeout(() => { printRecognizedText() }, 2500)
             } else {
-                recordBtnDownCounter = 0
                 reInitApp()
             }
         }

@@ -1,4 +1,5 @@
 import { lang } from "./config.js"
+import { reInitApp } from "./sondRecorder.js"
 
 export let recognition = undefined
 export let resultQuestionText = ""
@@ -21,6 +22,11 @@ export const initRecognition = (firstInit = true) => {
             resultQuestionText += " " + transcript
             document.querySelector("#record_question_btn").innerText = "Done"
             document.querySelector("#cancel_question_btn").hidden = false
+            document.querySelector("#cancel_question_btn").onclick = () => {
+                recognition.abort()
+                recognition = undefined
+                reInitApp()
+            }
         }
         recognition.onend = () => {
             console.info("[INFO] - empty text recognition chunk")
@@ -33,9 +39,7 @@ export const initRecognition = (firstInit = true) => {
             console.warn("[WARN] - text recognition chunk not parsed")
         }
     } else {
-        if (recognition) {
-            recognition.abort()
-        }
+        recognition.abort()
         recognition = undefined
     }
 }
