@@ -14,7 +14,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -52,7 +52,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -71,7 +71,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -90,7 +90,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -109,7 +109,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -128,7 +128,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -147,7 +147,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -166,7 +166,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -185,7 +185,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -204,7 +204,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -223,7 +223,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -242,7 +242,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -261,7 +261,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -280,7 +280,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -299,7 +299,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -318,7 +318,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -337,7 +337,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -356,7 +356,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
@@ -375,7 +375,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.024G
+          memory: 0.016G
     networks:
       - copilot-subnet
     restart: unless-stopped
