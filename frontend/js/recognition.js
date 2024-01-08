@@ -9,6 +9,7 @@ export const initRecognition = (firstInit = true) => {
         document.querySelector("#recognition-indicator").innerHTML = ""
         recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)()
         recognition.lang = lang
+        recognition.abort()
         recognition.start()
 
         recognition.onresult = (event) => {
@@ -29,11 +30,7 @@ export const initRecognition = (firstInit = true) => {
             }
         }
         recognition.onerror = () => {
-            console.info("[INFO] - text recognition chunk not parsed")
-            if (recognition) {
-                recognition.abort()
-                recognition.start()
-            }
+            console.warn("[WARN] - text recognition chunk not parsed")
         }
     } else {
         if (recognition) {
