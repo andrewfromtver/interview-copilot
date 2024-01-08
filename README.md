@@ -7,4 +7,4 @@ Copilot will listen to your question, convert it into text and send it to the OP
 
 # screenshots
 
-![screenshot-1](./screenshots/1.png)
+![screenshot-1](./screenshots/demo-set.png)
