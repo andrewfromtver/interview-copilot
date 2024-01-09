@@ -101,6 +101,13 @@ button:active {
     margin-left: 16px;
 }
 
+.donate_btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 8px;
+}
+
 .speech-placeholder {
     border-radius: 8px;
     background-color: lightgreen;
