@@ -460,7 +460,7 @@ services:
       resources:
         limits:
           cpus: "1"
-          memory: 0.016G
+          memory: 0.032G
     networks:
       - copilot-subnet
     restart: unless-stopped
