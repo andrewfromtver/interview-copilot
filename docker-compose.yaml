@@ -387,10 +387,10 @@ services:
 
   # nginx frontend
   copilot-frontend:
+    container_name: copilot-frontend
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
-    container_name: copilot-frontend
     depends_on:
       copilot-backend-1:
         condition: service_healthy
@@ -402,6 +402,36 @@ services:
         condition: service_healthy
       copilot-backend-5:
         condition: service_healthy
+      copilot-backend-6:
+        condition: service_healthy
+      copilot-backend-7:
+        condition: service_healthy
+      copilot-backend-8:
+        condition: service_healthy
+      copilot-backend-9:
+        condition: service_healthy
+      copilot-backend-10:
+        condition: service_healthy
+      copilot-backend-11:
+        condition: service_healthy
+      copilot-backend-12:
+        condition: service_healthy
+      copilot-backend-13:
+        condition: service_healthy
+      copilot-backend-14:
+        condition: service_healthy
+      copilot-backend-15:
+        condition: service_healthy
+      copilot-backend-16:
+        condition: service_healthy
+      copilot-backend-17:
+        condition: service_healthy
+      copilot-backend-18:
+        condition: service_healthy
+      copilot-backend-19:
+        condition: service_healthy
+      copilot-backend-20:
+        condition: service_healthy
     deploy:
       resources:
         limits:
@@ -411,9 +441,29 @@ services:
       - copilot-subnet
     ports:
       - 0.0.0.0:80:80
+      - 0.0.0.0:443:443
     restart: unless-stopped
+    volumes:
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
     healthcheck:
       test: netstat -an | grep 80 > /dev/null || exit 1
       interval: 5s
       timeout: 10s
       retries: 3
+
+  # lets encrypt certbot
+  copilot-certbot:
+    container_name: copilot-certbot
+    image: certbot/certbot:latest
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 0.016G
+    networks:
+      - copilot-subnet
+    restart: unless-stopped
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
