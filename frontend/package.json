@@ -28,6 +28,7 @@
         "@babel/core": "^7.15.8",
         "@babel/preset-env": "^7.15.8",
         "babel-loader": "^8.2.3",
-        "easy-speech": "^2.2.0"
+        "easy-speech": "^2.2.0",
+        "file-loader": "^6.2.0"
     }
 }
