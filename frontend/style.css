@@ -103,9 +103,11 @@ button:active {
 
 .donate_btn {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     margin: 8px;
+    height: 32px;
+    width: 216px;
 }
 
 .speech-placeholder {
@@ -211,5 +213,11 @@ input[type="checkbox"]:checked:active+span::after {
 
     span {
         background-color: var(--color-dark-grey);
+    }
+}
+
+@media (max-width: 400px) { 
+    .speech-toggle {
+        display: none;
     }
 }
