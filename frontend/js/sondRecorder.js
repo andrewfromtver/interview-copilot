@@ -9,7 +9,7 @@ let recordBtnDownCounter = 0
 const printRecognizedText = () => {
     document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = recognizedTextPlaceholder
-    document.querySelector("#recognized-text").innerText = resultQuestionText
+    document.querySelector("#recognized-text").value = resultQuestionText
     let newQuestionBtn = document.querySelector("#new_question_btn")
     newQuestionBtn.onclick = () => {
         EasySpeech.cancel()

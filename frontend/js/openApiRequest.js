@@ -6,7 +6,7 @@ export const apiRequest = (query) => {
     document.querySelector("#reload_question_btn").onclick = () => {
         EasySpeech.cancel()
         document.querySelector("#answer-text").value = "Reloading ..."
-        apiRequest(document.querySelector("#recognized-text").innerText)
+        apiRequest(document.querySelector("#recognized-text").value)
     }
     fetch(`${apiUrl}/v1/chat/completions`, {
         method: 'POST',

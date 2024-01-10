@@ -66,7 +66,7 @@ export const recognizedTextPlaceholder = `
     <h3 class="lang ru-RU">
         Расшифрованный вопрос
     </h3>
-    <p id="recognized-text"></p>
+    <input type="text" id="recognized-text"></input>
     <h3 class="lang en-US">
         GPT 3.5-turbo answer
     </h3>

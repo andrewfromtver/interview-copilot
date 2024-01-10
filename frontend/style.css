@@ -24,6 +24,11 @@ body {
     background-image: url("./assets/bg.gif");
 }
 
+#recognized-text {
+    width: calc(100% - 16px);
+    border-radius: 8px;
+}
+
 #voice-lang, #voice-mode {
     background-color: #fff;
     color: #333;
@@ -60,7 +65,7 @@ textarea {
 
 button {
     padding: 16px;
-    border-radius: 16px;
+    border-radius: 8px;
     border: none;
     background-color: #fff;
     color: #333;
@@ -121,7 +126,7 @@ button:active {
 }
 
 .card {
-    border-radius: 16px;
+    border-radius: 8px;
     background-color: #333;
     box-shadow: 0 0 16px #333;
     color: #fff;
