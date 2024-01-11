@@ -53,7 +53,7 @@ export const textQuestionBtnInit = () => {
         printRecognizedText()
         document.querySelector("#reload_question_btn").onclick = () => {
             EasySpeech.cancel()
-            document.querySelector("#answer-text").value = "Reloading ..."
+            document.querySelector("#answer-text").value = "Loading ..."
             apiRequest(document.querySelector("#recognized-text").value)
         }
         document.querySelector("#recognized-text").placeholder = "Type your question here"
