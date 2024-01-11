@@ -11,7 +11,7 @@ export const printRecognizedText = () => {
     document.querySelector("#app").innerHTML = recognizedTextPlaceholder
     document.querySelector("#recognized-text").value = resultQuestionText
     document.querySelector("#recognized-text").onkeydown = (event) => {
-        if (event.keyCode === 13) {
+        if (event.keyCode === 13 && event.shiftKey) {
             apiRequest(document.querySelector("#recognized-text").value)
             document.querySelector("#answer-text").value = "Loading ..."
         }

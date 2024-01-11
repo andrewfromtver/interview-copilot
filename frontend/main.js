@@ -66,4 +66,5 @@ window.onload = () => {
     langChanger()
     deploymentTypeDetector()
     apiHelthcheck(`${apiUrl}/v1/models`)
+    document.querySelector("body").hidden = false
 }

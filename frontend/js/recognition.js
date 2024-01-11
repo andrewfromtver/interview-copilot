@@ -19,7 +19,7 @@ export const initRecognition = (firstInit = true) => {
             document.querySelector("#recognition-indicator").innerHTML += `
                 <div class="speech-placeholder">...</div>
             `
-            resultQuestionText += " " + transcript
+            resultQuestionText += transcript + "\n"
             document.querySelector("#record_question_btn").innerText = "Done"
             document.querySelector("#cancel_question_btn").hidden = false
             document.querySelector("#cancel_question_btn").onclick = () => {

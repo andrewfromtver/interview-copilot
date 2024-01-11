@@ -13,7 +13,7 @@ export const errorInner = `
     </h3>
     <img src=${apiUnhealthyImg} alt="API unavailable">
     <p></p>
-    <button id="reload_page_btn">Try again</button>
+    <button id="reload_page_btn">Send request</button>
 </div>
 `
 
@@ -66,16 +66,16 @@ export const recognizedTextPlaceholder = `
     <h3 class="lang ru-RU">
         Ваш вопрос
     </h3>
-    <input type="text" id="recognized-text"></input>
+    <textarea id="recognized-text"></textarea>
     <h3 class="lang en-US">
         GPT 3.5-turbo answer
     </h3>
     <h3 class="lang ru-RU">
         Ответ GPT 3.5-turbo
     </h3>
-    <textarea id="answer-text">Loading ...</textarea>
-    <button id="new_question_btn">New question</button>
-    <button id="reload_question_btn">Try again</button>
+    <textarea readonly id="answer-text">Loading ...</textarea>
+    <button id="new_question_btn">Back</button>
+    <button id="reload_question_btn">Send request</button>
 </div>
 `
 
