@@ -29,6 +29,18 @@ body {
     border-radius: 8px;
 }
 
+#text-question-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 48px 8px;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 0 4px #333;
+    border-radius: 32px;
+    padding: 6px 0 0 0;
+}
+
 #voice-lang, #voice-mode {
     background-color: #fff;
     color: #333;

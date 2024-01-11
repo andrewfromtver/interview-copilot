@@ -1,5 +1,5 @@
 import { lang } from "./config.js"
-import { reInitApp } from "./sondRecorder.js"
+import { reInitApp, printRecognizedText } from "./sondRecorder.js"
 
 export let recognition = undefined
 export let resultQuestionText = ""
@@ -41,5 +41,14 @@ export const initRecognition = (firstInit = true) => {
     } else {
         recognition.abort()
         recognition = undefined
+    }
+}
+
+export const textQuestionBtnInit = () => {
+    document.querySelector("#text-question-btn").onclick = () => {
+        resultQuestionText = ""
+        printRecognizedText()
+        document.querySelector("#recognized-text").placeholder = "Type your question here"
+        document.querySelector("#answer-text").value = "Ready for question ..."
     }
 }

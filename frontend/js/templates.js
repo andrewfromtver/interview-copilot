@@ -61,10 +61,10 @@ export const resultPlaceholder = `
 export const recognizedTextPlaceholder = `
 <div class="card card-init animate__animated animate__fadeIn">
     <h3 class="lang en-US">
-        The decoded question
+        The question
     </h3>
     <h3 class="lang ru-RU">
-        Расшифрованный вопрос
+        Ваш вопрос
     </h3>
     <input type="text" id="recognized-text"></input>
     <h3 class="lang en-US">

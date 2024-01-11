@@ -6,7 +6,7 @@ import { uiTranslate } from "./config.js"
 
 let recordBtnDownCounter = 0
 
-const printRecognizedText = () => {
+export const printRecognizedText = () => {
     document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = recognizedTextPlaceholder
     document.querySelector("#recognized-text").value = resultQuestionText
@@ -21,7 +21,7 @@ const printRecognizedText = () => {
         EasySpeech.cancel()
         reInitApp()
     }
-    apiRequest(resultQuestionText)
+    if (resultQuestionText) apiRequest(resultQuestionText)
     uiTranslate()
 }
 

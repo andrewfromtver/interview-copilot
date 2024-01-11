@@ -1,9 +1,12 @@
 import "./style.css"
 import manifest from "./manifest.webmanifest";
 
+import textQuestionIcon from "./assets/text-question.svg"
+
 import { errorInner, successInner } from "./js/templates.js"
 import { apiUrl, apiKey, apiKeyInputPromt, uiTranslate, deploymentWithBackend, speachToggleListener, deploymentTypeDetector, langChanger, lang } from "./js/config.js"
 import { recordSound } from "./js/sondRecorder.js"
+import { textQuestionBtnInit } from "./js/recognition.js"
 
 const detectMobileOrDesctop = () => {
     // setInterval(() => { if (recordBtn) recordBtn.focus() }, 100)
@@ -56,6 +59,8 @@ const apiHelthcheck = (apiUrl) => {
 }
 
 window.onload = () => {
+    document.querySelector("#text-question-img").src = textQuestionIcon
+    textQuestionBtnInit()
     document.querySelector("#my-manifest-placeholder").setAttribute("href", manifest);
     //detectMobileOrDesctop()
     langChanger()
