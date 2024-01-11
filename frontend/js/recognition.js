@@ -1,5 +1,8 @@
+import EasySpeech from 'easy-speech'
+
 import { lang } from "./config.js"
 import { reInitApp, printRecognizedText } from "./sondRecorder.js"
+import { apiRequest } from "./openApiRequest.js"
 
 export let recognition = undefined
 export let resultQuestionText = ""
@@ -48,6 +51,11 @@ export const textQuestionBtnInit = () => {
     document.querySelector("#text-question-btn").onclick = () => {
         resultQuestionText = ""
         printRecognizedText()
+        document.querySelector("#reload_question_btn").onclick = () => {
+            EasySpeech.cancel()
+            document.querySelector("#answer-text").value = "Reloading ..."
+            apiRequest(document.querySelector("#recognized-text").value)
+        }
         document.querySelector("#recognized-text").placeholder = "Type your question here"
         document.querySelector("#answer-text").value = "Ready for question ..."
     }
