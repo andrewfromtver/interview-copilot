@@ -11,6 +11,7 @@ COPY webpack.config.js \
     style.css \
     main.js \
     favicon.ico \
+    manifest.webmanifest \
     /src/
 COPY assets/ /src/assets/
 COPY js/ /src/js/
