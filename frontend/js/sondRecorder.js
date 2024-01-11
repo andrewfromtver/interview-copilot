@@ -13,6 +13,7 @@ const printRecognizedText = () => {
     document.querySelector("#recognized-text").onkeydown = (event) => {
         if (event.keyCode === 13) {
             apiRequest(document.querySelector("#recognized-text").value)
+            document.querySelector("#recognized-text").value = "Loading ..."
         }
     }
     let newQuestionBtn = document.querySelector("#new_question_btn")
