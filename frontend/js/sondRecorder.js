@@ -10,6 +10,11 @@ const printRecognizedText = () => {
     document.querySelector("#recognition-indicator").innerHTML = ""
     document.querySelector("#app").innerHTML = recognizedTextPlaceholder
     document.querySelector("#recognized-text").value = resultQuestionText
+    document.querySelector("#recognized-text").onkeydown = (event) => {
+        if (event.keyCode === 13) {
+            apiRequest(document.querySelector("#recognized-text").value)
+        }
+    }
     let newQuestionBtn = document.querySelector("#new_question_btn")
     newQuestionBtn.onclick = () => {
         EasySpeech.cancel()
