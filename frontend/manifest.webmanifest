@@ -4,7 +4,7 @@
     "start_url": "/",
     "background_color": "#333333",
     "theme_color": "#333333",
-    "display": "minimal-ui",
+    "display": "standalone",
     "description": "Welcome to Interview co-pilot - Your Guide to Interview Success!",
     "icons": [
         {
