@@ -67,7 +67,7 @@ body {
 textarea {
     width: calc(100% - 40px);
     resize: vertical;
-    min-height: 128px;
+    min-height: 38px;
     background-color: black;
     color: #fff;
     padding: 16px;
@@ -75,7 +75,7 @@ textarea {
 }
 
 button {
-    padding: 16px;
+    padding: 8px 16px;
     border-radius: 8px;
     border: none;
     background-color: #fff;
@@ -97,6 +97,10 @@ button:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#answer-text {
+    height: calc(100vh - 412px);
 }
 
 #recognition-indicator {
@@ -146,7 +150,7 @@ button:active {
     text-align: center;
     width: calc(100% - 32px);
     max-width: 480px;
-    margin: 64px auto 48px auto;
+    margin: 64px auto 16px auto;
 }
 
 .card-init>img {
